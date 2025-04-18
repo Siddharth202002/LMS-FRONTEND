@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
 body {
   margin: auto;
   position: relative;
