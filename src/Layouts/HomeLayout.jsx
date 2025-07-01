@@ -1,11 +1,13 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Footer from "../Components/Footer";
+import { logout } from "../Redux/Slices/AuthSlice";
 
 function HomeLayout({ children }) {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
   const role = useSelector((state) => state?.auth?.role);
   function changeWidth() {
@@ -13,8 +15,9 @@ function HomeLayout({ children }) {
     drawerSide[0].style.width = "auto";
   }
 
-  function handleLogout(e) {
+  async function handleLogout(e) {
     e.preventDefault();
+    await dispatch(logout());
   }
 
   function hideDrawer() {
