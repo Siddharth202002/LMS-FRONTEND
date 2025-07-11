@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import axiosInstance from "../../Helpers/axiosInstance";
 
 const initialState = {
-  isLoggedIn: localStorage.getItem("isloggedIn") || false,
+  isLoggedIn: localStorage.getItem("isLoggedIn") || false,
   role: localStorage.getItem("role") || "",
   data: localStorage.getItem("data") || {},
 };
