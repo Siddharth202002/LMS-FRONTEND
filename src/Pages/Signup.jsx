@@ -15,9 +15,9 @@ function Signup() {
   const [previewImage, setPreviewImage] = useState("");
 
   const [signupData, setSignupData] = useState({
-    fullname: "sdfbdfbafdadf",
-    email: "abc@gmail.com",
-    password: "ABC@abc1234",
+    fullname: "",
+    email: "",
+    password: "",
     avatar: "",
   });
 
