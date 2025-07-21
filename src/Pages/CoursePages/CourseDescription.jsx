@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../../Layouts/HomeLayout";
 
 function CourseDescription() {
   const { state } = useLocation();
   const { role, data } = useSelector((state) => state.auth);
-  console.log(data);
+  const navigate = useNavigate();
 
   return (
     <HomeLayout>
@@ -41,7 +41,10 @@ function CourseDescription() {
                     Watch lectures
                   </button>
                 ) : (
-                  <button className="border border-white bg-yellow-600 rounded-lg   py-2   mt-2 hover:bg-amber-500 ease-in-out duration-300  font-semibold text-xl w-1/2  ">
+                  <button
+                    onClick={() => navigate("/checkout")}
+                    className="border border-white bg-yellow-600 rounded-lg   py-2   mt-2 hover:bg-amber-500 ease-in-out duration-300  font-semibold text-xl w-1/2  "
+                  >
                     Subscribe
                   </button>
                 )}

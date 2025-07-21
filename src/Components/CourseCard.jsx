@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 function CourseCard({ data }) {
   const navigate = useNavigate();
-  console.log(data);
 
   return (
     <div
