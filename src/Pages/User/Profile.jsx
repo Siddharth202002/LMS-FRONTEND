@@ -1,11 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 import HomeLayout from "../../Layouts/HomeLayout";
+import { getUserData } from "../../Redux/Slices/AuthSlice";
+import { cancelCourseBundle } from "../../Redux/Slices/razorpaySlice";
 
 function Profile() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userDetailes = useSelector((state) => state?.auth?.data);
+
+  async function cancelSubscription() {
+    await dispatch(cancelCourseBundle());
+    await dispatch(getUserData());
+
+    navigate("/");
+  }
   return (
     <HomeLayout>
       <div className="h-[90vh] flex items-center justify-center">
@@ -33,7 +45,7 @@ function Profile() {
             </p>
             <p>
               Subscription:{" "}
-              {userDetailes?.subscription?.status === "active" ? (
+              {userDetailes?.subscription?.status === "Active" ? (
                 <span className="ml-2">{"Active"}</span>
               ) : (
                 <span className="ml-2">{"Inactive"}</span>
@@ -78,7 +90,7 @@ function Profile() {
             </Link>
           </div>
 
-          {userDetailes?.subscription?.status === "active" && (
+          {userDetailes?.subscription?.status === "Active" && (
             <button
               className=" w-full
               rounded-sm
@@ -89,6 +101,7 @@ function Profile() {
               py-2
               
               "
+              onClick={cancelSubscription}
             >
               Cancel Subscription
             </button>

@@ -18,6 +18,7 @@ function Checkout() {
   const subscription_id = useSelector(
     (state) => state?.razorpay?.subscription_id
   );
+  console.log(subscription_id);
 
   const userData = useSelector((state) => state?.auth?.data);
 
