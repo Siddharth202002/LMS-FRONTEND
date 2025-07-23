@@ -7,7 +7,9 @@ function RequireAuth({ allowedRoles }) {
 
   const hasAccess =
     isLoggedIn &&
-    allowedRoles?.some((myRole) => myRole.trim() === role?.trim());
+    allowedRoles.some(
+      (myRole) => myRole.trim().toLowerCase() === role?.trim().toLowerCase()
+    );
 
   return hasAccess ? (
     <Outlet />

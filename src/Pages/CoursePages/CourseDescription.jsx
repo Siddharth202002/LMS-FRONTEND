@@ -35,8 +35,15 @@ function CourseDescription() {
                   {state?.createdBy}
                 </p>
 
-                {role === "Admin" || data?.subsciption?.status === "Active" ? (
-                  <button className="border border-white bg-yellow-600 rounded-lg  py-3 w-1/2 px-5  mt-2 hover:bg-amber-500 ease-in-out duration-300  font-semibold text-xl ">
+                {role === "Admin" || data?.subscription?.status === "Active" ? (
+                  <button
+                    onClick={() =>
+                      navigate("/course/displaylectures", {
+                        state: { ...state },
+                      })
+                    }
+                    className="border border-white bg-yellow-600 rounded-lg  py-3 w-1/2 px-5  mt-2 hover:bg-amber-500 ease-in-out duration-300  font-semibold text-xl "
+                  >
                     {" "}
                     Watch lectures
                   </button>
