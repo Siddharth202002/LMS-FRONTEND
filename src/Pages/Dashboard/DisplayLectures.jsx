@@ -109,10 +109,21 @@ function DisplayLectures() {
           </div>
         )}
 
-        {lectures.length === 0 && (
-          <h1 className="text-2xl text-yellow-500 font-semibold">
-            No lecture found{" "}
-          </h1>
+        {lectures.length === 0 && role === "ADMIN" ? (
+          <button
+            onClick={() =>
+              navigate("/course/addlecture", { state: { ...state } })
+            }
+            className="btn btn-primary px-2 py-1 rounded-md font-semibold text-sm"
+          >
+            Add new lecture
+          </button>
+        ) : (
+          <div className=" ">
+            <h1 className="text-yellow-500  font-semibold text-xl">
+              No Lecture Found{" "}
+            </h1>
+          </div>
         )}
       </div>
     </HomeLayout>
