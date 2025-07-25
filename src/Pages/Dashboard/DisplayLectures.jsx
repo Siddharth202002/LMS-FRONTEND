@@ -69,7 +69,7 @@ function DisplayLectures() {
             <ul className="w-[28rem] p-2 shadow-[0_0_10px_black] space-y-4">
               <li className="font-semibold text-xl text-yellow-500 flex items-center justify-between">
                 <p>Lectures list</p>
-                {role === "Admin" && (
+                {role === "ADMIN" && (
                   <button
                     onClick={() =>
                       navigate("/course/addlecture", { state: { ...state } })
@@ -90,8 +90,6 @@ function DisplayLectures() {
                         onClick={() => setCurrentVideo(idx)}
                       >
                         <span> Lecture{idx + 1}</span>
-
-                        {lecture?.title}
                       </p>
 
                       {role === "ADMIN" && (
