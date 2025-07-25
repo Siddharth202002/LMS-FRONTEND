@@ -58,11 +58,11 @@ function AddLecture() {
     }
   }
 
-  // useEffect(() => {
-  //   if (!courseDetailes?.state) {
-  //     navigate("/courses");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!state) {
+      navigate("/courses");
+    }
+  }, []);
   return (
     <>
       <HomeLayout>
