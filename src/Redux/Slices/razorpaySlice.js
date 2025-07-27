@@ -55,7 +55,7 @@ export const getPaymentRecord = createAsyncThunk(
   "/payments/record",
   async () => {
     try {
-      const res = await axiosInstance.get("/payments?count=100");
+      const res = axiosInstance.get("/payments?count=100");
       toast.promise(res, {
         loading: "Getting the payments of records",
         success: (data) => data?.data?.message,
@@ -107,9 +107,11 @@ const razorpaySlice = createSlice({
         state.isPaymentVerified = action?.payload?.success;
       })
       .addCase(getPaymentRecord.fulfilled, (state, action) => {
+        console.log(action);
+
         state.allPayments = action?.payload?.allPayments;
         state.finalMonths = action?.payload?.finalMonths;
-        state.monthlySalesRecored = action?.payload?.monthlySalesRecored;
+        state.monthlySalesRecored = action?.payload?.monthlySalaryRecord;
       });
   },
 });
