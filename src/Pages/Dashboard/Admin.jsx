@@ -40,7 +40,7 @@ function Admin() {
     (state) => state.statsOfUser
   );
 
-  const { allPayments, finalMonths, monthlySalesRecored } = useSelector(
+  const { allPayments, monthlySalesRecored } = useSelector(
     (state) => state.razorpay
   );
 
