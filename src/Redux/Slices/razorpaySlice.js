@@ -58,7 +58,9 @@ export const getPaymentRecord = createAsyncThunk(
   "/payments/record",
   async () => {
     try {
-      const res = axiosInstance.get("/payments?count=100");
+      const res = axiosInstance.get("/payments?count=100", {
+        withCredentials: true,
+      });
       toast.promise(res, {
         loading: "Getting the payments of records",
         success: (data) => data?.data?.message,
@@ -75,7 +77,9 @@ export const cancelCourseBundle = createAsyncThunk(
   "/payments/cancel",
   async () => {
     try {
-      const res = axiosInstance.post("/payments/unsubscribe");
+      const res = axiosInstance.post("/payments/unsubscribe", {
+        withCredentials: true,
+      });
       toast.promise(res, {
         loading: "Unsubscribing the bundle",
         success: (data) => data?.data?.message,

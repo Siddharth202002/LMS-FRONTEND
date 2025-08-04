@@ -34,7 +34,9 @@ export const createNewCourse = createAsyncThunk(
     formData.append("thumbnail", data?.thumbnail);
 
     try {
-      const response = axiosInstance.post("courses", formData);
+      const response = axiosInstance.post("courses", formData, {
+        withCredentials: true,
+      });
       toast.promise(response, {
         loading: "Creating new course",
         success: "Course created successfully",
@@ -49,7 +51,9 @@ export const createNewCourse = createAsyncThunk(
 
 export const deleteCourse = createAsyncThunk("/course/delete", async (id) => {
   try {
-    const response = axiosInstance.post(`/courses/${id}`);
+    const response = axiosInstance.post(`/courses/${id}`, {
+      withCredentials: true,
+    });
     toast.promise(response, {
       loading: "deleting the course",
       success: "Course deleted successfully",

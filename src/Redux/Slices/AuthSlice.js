@@ -14,7 +14,9 @@ const initialState = {
 
 export const createAccount = createAsyncThunk("/auth/signup", async (data) => {
   try {
-    const res = axiosInstance.post("user/register", data);
+    const res = axiosInstance.post("user/register", data, {
+      withCredentials: true,
+    });
     toast.promise(res, {
       loading: "Wait: creating your account",
       success: (data) => {
@@ -50,7 +52,9 @@ export const login = createAsyncThunk("/auth/login", async (data) => {
 
 export const logout = createAsyncThunk("/auth/logout", async () => {
   try {
-    const res = axiosInstance.get("user/logout");
+    const res = axiosInstance.get("user/logout", {
+      withCredentials: true,
+    });
     toast.promise(res, {
       loading: "Wait: logout in progress...",
       success: (data) => {
@@ -71,7 +75,9 @@ export const updateUserProfile = createAsyncThunk(
     try {
       console.log(id, formData);
 
-      const res = axiosInstance.put(`user/update/${id}`, formData);
+      const res = axiosInstance.put(`user/update/${id}`, formData, {
+        withCredentials: true,
+      });
       toast.promise(res, {
         loading: "Wait update profile in progress...",
         success: (data) => {
@@ -89,7 +95,9 @@ export const updateUserProfile = createAsyncThunk(
 
 export const getUserData = createAsyncThunk("/user/data", async () => {
   try {
-    const res = axiosInstance.get("user/me");
+    const res = axiosInstance.get("user/me", {
+      withCredentials: true,
+    });
 
     return (await res).data;
   } catch (error) {

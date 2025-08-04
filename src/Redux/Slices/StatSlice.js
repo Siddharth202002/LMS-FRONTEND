@@ -10,7 +10,9 @@ const initialState = {
 
 export const getStatsData = createAsyncThunk("/stats/get", async () => {
   try {
-    const res = axiosInstance.get("/admin/stats/users");
+    const res = axiosInstance.get("/admin/stats/users", {
+      withCredentials: true,
+    });
     toast.promise(res, {
       loading: "Getting the stats...",
       success: (data) => {
