@@ -14,7 +14,10 @@ const initialState = {
 
 export const getRazorPayId = createAsyncThunk("/razorpay/getId", async () => {
   try {
-    const res = await axiosInstance.get("/payments/razorpay_key");
+    const res = await ("/payments/razorpay_key",
+    {
+      withCredentials: true,
+    });
     return res.data;
   } catch {
     toast.error("Failed to load data");

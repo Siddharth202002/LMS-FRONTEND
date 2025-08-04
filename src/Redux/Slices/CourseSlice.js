@@ -8,7 +8,9 @@ const initialState = {
 
 export const getAllCourses = createAsyncThunk("course/get", async () => {
   try {
-    const response = axiosInstance.get("/courses");
+    const response = axiosInstance.get("/courses", {
+      withCredentials: true,
+    });
     toast.promise(response, {
       loading: "Courses are loading...",
       success: "Courses loaded successfully",
